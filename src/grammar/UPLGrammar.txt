@@ -1,0 +1,30 @@
+PROGRAM → begin DECLARATIONS STATEMENTS end
+
+DECLARATIONS → DECLARATION DECLARATIONS | ε
+DECLARATION → TYPE id ; | TYPE id = EXPR ;
+
+TYPE → int | bool
+
+STATEMENTS → STATEMENT STATEMENTS | ε
+STATEMENT → ASSIGNMENT | IF_STATEMENT | DO_WHILE | FOR_LOOP | PRINT | DECLARATION
+
+ASSIGNMENT → id = EXPR ;
+
+IF_STATEMENT → if ( CONDITION ) then { STATEMENTS } | if ( CONDITION ) then { STATEMENTS } else { STATEMENTS }
+
+CONDITION → EXPR > EXPR | EXPR >= EXPR | EXPR == EXPR
+
+DO_WHILE → do { STATEMENTS } while ( CONDITION ) ;
+
+FOR_LOOP → for ( ASSIGNMENT ; CONDITION ; ASSIGNMENT ) { STATEMENTS }
+
+PRINT → print ( EXPR ) ;
+
+EXPR → TERM + EXPR | TERM
+TERM → FACTOR * TERM | FACTOR
+FACTOR → id | number | ( EXPR ) | true | false
+
+id → letter (letter | digit)*
+number → digit digit*
+letter → a | b | c | ... | z | A | B | C | ... | Z
+digit → 0 | 1 | 2 | ... | 9
