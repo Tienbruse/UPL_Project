@@ -1,3 +1,4 @@
+/* src/java/lexer/LexerManual.java */
 package lexer;
 
 import java.io.*;
@@ -93,8 +94,13 @@ public class LexerManual {
     }
 
     public static void main(String[] args) throws IOException {
-        String input = "begin int x; int y=x+1; /* comments */ bool a; print(a+1); end";
-        LexerManual lexer = new LexerManual(input);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder input = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            input.append(line).append("\n");
+        }
+        LexerManual lexer = new LexerManual(input.toString());
         String token;
         while (!(token = lexer.nextToken()).equals("EOF")) {
             System.out.println(token);
