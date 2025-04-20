@@ -49,7 +49,7 @@ package lexer;
 
 Letter = [a-zA-Z]
 Digit = [0-9]
-Identifier = {Letter} ({Letter} | {Digit})*
+Identifier = {Letter}+ ({Digit})*
 Number = {Digit}+
 WhiteSpace = [ \t\n\r]+
 CommentLine = "//" [^\n]*

@@ -49,8 +49,13 @@ public class LexerManual {
 
     private String readIdentifierOrKeyword() {
         int start = pos;
-        while (pos < input.length() && (Character.isLetterOrDigit(input.charAt(pos)))) pos++;
+
+        while (pos < input.length() && Character.isLetter(input.charAt(pos))) pos++;
+ 
+        while (pos < input.length() && Character.isDigit(input.charAt(pos))) pos++;
+        
         String value = input.substring(start, pos);
+        
         switch (value) {
             case "begin": return "BEGIN:" + value;
             case "end": return "END:" + value;
